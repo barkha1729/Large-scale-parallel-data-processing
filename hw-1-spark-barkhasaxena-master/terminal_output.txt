@@ -1,0 +1,773 @@
+mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< cs6240:spark-demo >--------------------------
+[INFO] Building spark-demo 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for commons-codec:commons-codec:jar:1.15-SNAPSHOT is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ spark-demo ---
+[INFO] Deleting /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ spark-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ spark-demo ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- scala-maven-plugin:3.3.1:compile (default) @ spark-demo ---
+[WARNING]  Expected all dependencies to require Scala version: 2.11.12
+[WARNING]  cs6240:spark-demo:1.0 requires scala version: 2.11.12
+[WARNING]  com.twitter:chill_2.11:0.8.4 requires scala version: 2.11.8
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/target/classes at 1643998542745
+[INFO] prepare-compile in 0 s
+[INFO] compile in 3 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ spark-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ spark-demo ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ spark-demo ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ spark-demo ---
+[INFO] Building jar: /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/target/spark-demo-1.0.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:3.1.0:shade (default) @ spark-demo ---
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/target/spark-demo-1.0.jar with /Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/target/spark-demo-1.0-shaded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.568 s
+[INFO] Finished at: 2022-02-04T13:15:46-05:00
+[INFO] ------------------------------------------------------------------------
+cp target/spark-demo-1.0.jar spark-demo.jar
+rm -rf output*
+spark-submit --class wc.WordCountMain --master local[4] --name "Word Count" spark-demo.jar input output
+2022-02-04 13:15:47 WARN  Utils:66 - Your hostname, Barkhas-MacBook-Pro.local resolves to a loopback address: 127.0.0.1; using 10.0.0.13 instead (on interface en0)
+2022-02-04 13:15:47 WARN  Utils:66 - Set SPARK_LOCAL_IP if you need to bind to another address
+2022-02-04 13:15:47 WARN  NativeCodeLoader:60 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2022-02-04 13:15:47 INFO  SparkContext:54 - Running Spark version 2.3.1
+2022-02-04 13:15:47 INFO  SparkContext:54 - Submitted application: Word Count
+2022-02-04 13:15:47 INFO  SecurityManager:54 - Changing view acls to: maverick
+2022-02-04 13:15:47 INFO  SecurityManager:54 - Changing modify acls to: maverick
+2022-02-04 13:15:47 INFO  SecurityManager:54 - Changing view acls groups to: 
+2022-02-04 13:15:47 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2022-02-04 13:15:47 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(maverick); groups with view permissions: Set(); users  with modify permissions: Set(maverick); groups with modify permissions: Set()
+2022-02-04 13:15:47 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 57357.
+2022-02-04 13:15:47 INFO  SparkEnv:54 - Registering MapOutputTracker
+2022-02-04 13:15:47 INFO  SparkEnv:54 - Registering BlockManagerMaster
+2022-02-04 13:15:47 INFO  BlockManagerMasterEndpoint:54 - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2022-02-04 13:15:47 INFO  BlockManagerMasterEndpoint:54 - BlockManagerMasterEndpoint up
+2022-02-04 13:15:47 INFO  DiskBlockManager:54 - Created local directory at /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/blockmgr-73ec9a28-52f2-4de7-8973-6dbe88e43a95
+2022-02-04 13:15:47 INFO  MemoryStore:54 - MemoryStore started with capacity 366.3 MB
+2022-02-04 13:15:47 INFO  SparkEnv:54 - Registering OutputCommitCoordinator
+2022-02-04 13:15:47 INFO  log:192 - Logging initialized @1454ms
+2022-02-04 13:15:47 INFO  Server:346 - jetty-9.3.z-SNAPSHOT
+2022-02-04 13:15:47 INFO  Server:414 - Started @1500ms
+2022-02-04 13:15:47 WARN  Utils:66 - Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+2022-02-04 13:15:48 INFO  AbstractConnector:278 - Started ServerConnector@797501a{HTTP/1.1,[http/1.1]}{0.0.0.0:4041}
+2022-02-04 13:15:48 INFO  Utils:54 - Successfully started service 'SparkUI' on port 4041.
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@402f80f5{/jobs,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2a7b6f69{/jobs/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@20312893{/jobs/job,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@c41709a{/jobs/job/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@7db0565c{/stages,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@54ec8cc9{/stages/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@52eacb4b{/stages/stage,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1a6f5124{/stages/stage/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1edb61b1{/stages/pool,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@ec2bf82{/stages/pool/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@cc62a3b{/storage,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@6cc0bcf6{/storage/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@29539e36{/storage/rdd,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@32f61a31{/storage/rdd/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@f5c79a6{/environment,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@669253b7{/environment/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5305c37d{/executors,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@51a06cbe{/executors/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3dddbe65{/executors/threadDump,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@49a64d82{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@344561e0{/static,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2575f671{/,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@329a1243{/api,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@4593ff34{/jobs/job/kill,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@37d3d232{/stages/stage/kill,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  SparkUI:54 - Bound SparkUI to 0.0.0.0, and started at http://10.0.0.13:4041
+2022-02-04 13:15:48 INFO  SparkContext:54 - Added JAR file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/spark-demo.jar at spark://10.0.0.13:57357/jars/spark-demo.jar with timestamp 1643998548057
+2022-02-04 13:15:48 INFO  Executor:54 - Starting executor ID driver on host localhost
+2022-02-04 13:15:48 INFO  Utils:54 - Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57358.
+2022-02-04 13:15:48 INFO  NettyBlockTransferService:54 - Server created on 10.0.0.13:57358
+2022-02-04 13:15:48 INFO  BlockManager:54 - Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2022-02-04 13:15:48 INFO  BlockManagerMaster:54 - Registering BlockManager BlockManagerId(driver, 10.0.0.13, 57358, None)
+2022-02-04 13:15:48 INFO  BlockManagerMasterEndpoint:54 - Registering block manager 10.0.0.13:57358 with 366.3 MB RAM, BlockManagerId(driver, 10.0.0.13, 57358, None)
+2022-02-04 13:15:48 INFO  BlockManagerMaster:54 - Registered BlockManager BlockManagerId(driver, 10.0.0.13, 57358, None)
+2022-02-04 13:15:48 INFO  BlockManager:54 - Initialized BlockManager: BlockManagerId(driver, 10.0.0.13, 57358, None)
+2022-02-04 13:15:48 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@6f8f8a80{/metrics/json,null,AVAILABLE,@Spark}
+2022-02-04 13:15:48 INFO  MemoryStore:54 - Block broadcast_0 stored as values in memory (estimated size 483.7 KB, free 365.8 MB)
+2022-02-04 13:15:48 INFO  MemoryStore:54 - Block broadcast_0_piece0 stored as bytes in memory (estimated size 51.1 KB, free 365.8 MB)
+2022-02-04 13:15:48 INFO  BlockManagerInfo:54 - Added broadcast_0_piece0 in memory on 10.0.0.13:57358 (size: 51.1 KB, free: 366.3 MB)
+2022-02-04 13:15:48 INFO  SparkContext:54 - Created broadcast 0 from textFile at WordCount.scala:43
+2022-02-04 13:15:48 INFO  FileInputFormat:266 - Total input files to process : 1
+2022-02-04 13:15:48 INFO  root:52 - (40) ShuffledRDD[5] at reduceByKey at WordCount.scala:51 []
+ +-(40) MapPartitionsRDD[4] at map at WordCount.scala:50 []
+    |   MapPartitionsRDD[3] at filter at WordCount.scala:49 []
+    |   MapPartitionsRDD[2] at map at WordCount.scala:45 []
+    |   input MapPartitionsRDD[1] at textFile at WordCount.scala:43 []
+    |   input HadoopRDD[0] at textFile at WordCount.scala:43 []
+2022-02-04 13:15:48 INFO  deprecation:1420 - mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+2022-02-04 13:15:48 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:48 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:48 INFO  SparkContext:54 - Starting job: runJob at SparkHadoopWriter.scala:78
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Registering RDD 4 (map at WordCount.scala:50)
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Got job 0 (runJob at SparkHadoopWriter.scala:78) with 40 output partitions
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Final stage: ResultStage 1 (runJob at SparkHadoopWriter.scala:78)
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Parents of final stage: List(ShuffleMapStage 0)
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Missing parents: List(ShuffleMapStage 0)
+2022-02-04 13:15:48 INFO  DAGScheduler:54 - Submitting ShuffleMapStage 0 (MapPartitionsRDD[4] at map at WordCount.scala:50), which has no missing parents
+2022-02-04 13:15:48 INFO  MemoryStore:54 - Block broadcast_1 stored as values in memory (estimated size 4.8 KB, free 365.8 MB)
+2022-02-04 13:15:48 INFO  MemoryStore:54 - Block broadcast_1_piece0 stored as bytes in memory (estimated size 2.7 KB, free 365.8 MB)
+2022-02-04 13:15:48 INFO  BlockManagerInfo:54 - Added broadcast_1_piece0 in memory on 10.0.0.13:57358 (size: 2.7 KB, free: 366.2 MB)
+2022-02-04 13:15:48 INFO  SparkContext:54 - Created broadcast 1 from broadcast at DAGScheduler.scala:1039
+2022-02-04 13:15:49 INFO  DAGScheduler:54 - Submitting 40 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[4] at map at WordCount.scala:50) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+2022-02-04 13:15:49 INFO  TaskSchedulerImpl:54 - Adding task set 0.0 with 40 tasks
+2022-02-04 13:15:49 INFO  TaskSetManager:54 - Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:49 INFO  TaskSetManager:54 - Starting task 1.0 in stage 0.0 (TID 1, localhost, executor driver, partition 1, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:49 INFO  TaskSetManager:54 - Starting task 2.0 in stage 0.0 (TID 2, localhost, executor driver, partition 2, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:49 INFO  TaskSetManager:54 - Starting task 3.0 in stage 0.0 (TID 3, localhost, executor driver, partition 3, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:49 INFO  Executor:54 - Running task 0.0 in stage 0.0 (TID 0)
+2022-02-04 13:15:49 INFO  Executor:54 - Running task 3.0 in stage 0.0 (TID 3)
+2022-02-04 13:15:49 INFO  Executor:54 - Running task 2.0 in stage 0.0 (TID 2)
+2022-02-04 13:15:49 INFO  Executor:54 - Running task 1.0 in stage 0.0 (TID 1)
+2022-02-04 13:15:49 INFO  Executor:54 - Fetching spark://10.0.0.13:57357/jars/spark-demo.jar with timestamp 1643998548057
+2022-02-04 13:15:49 INFO  TransportClientFactory:267 - Successfully created connection to /10.0.0.13:57357 after 18 ms (0 ms spent in bootstraps)
+2022-02-04 13:15:49 INFO  Utils:54 - Fetching spark://10.0.0.13:57357/jars/spark-demo.jar to /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-8b1c7923-8dc1-4f6f-bcca-7b2206aa673e/userFiles-50e6b080-06ee-4b92-80e5-33037896ce5e/fetchFileTemp411389114394075281.tmp
+2022-02-04 13:15:49 INFO  Executor:54 - Adding file:/private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-8b1c7923-8dc1-4f6f-bcca-7b2206aa673e/userFiles-50e6b080-06ee-4b92-80e5-33037896ce5e/spark-demo.jar to class loader
+2022-02-04 13:15:49 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:100663296+33554432
+2022-02-04 13:15:49 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:0+33554432
+2022-02-04 13:15:49 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:67108864+33554432
+2022-02-04 13:15:49 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:33554432+33554432
+2022-02-04 13:15:50 INFO  Executor:54 - Finished task 3.0 in stage 0.0 (TID 3). 1232 bytes result sent to driver
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Starting task 4.0 in stage 0.0 (TID 4, localhost, executor driver, partition 4, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:50 INFO  Executor:54 - Running task 4.0 in stage 0.0 (TID 4)
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Finished task 3.0 in stage 0.0 (TID 3) in 1344 ms on localhost (executor driver) (1/40)
+2022-02-04 13:15:50 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:134217728+33554432
+2022-02-04 13:15:50 INFO  Executor:54 - Finished task 2.0 in stage 0.0 (TID 2). 1189 bytes result sent to driver
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Starting task 5.0 in stage 0.0 (TID 5, localhost, executor driver, partition 5, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:50 INFO  Executor:54 - Running task 5.0 in stage 0.0 (TID 5)
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Finished task 2.0 in stage 0.0 (TID 2) in 1347 ms on localhost (executor driver) (2/40)
+2022-02-04 13:15:50 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:167772160+33554432
+2022-02-04 13:15:50 INFO  Executor:54 - Finished task 0.0 in stage 0.0 (TID 0). 1189 bytes result sent to driver
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Starting task 6.0 in stage 0.0 (TID 6, localhost, executor driver, partition 6, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:50 INFO  Executor:54 - Running task 6.0 in stage 0.0 (TID 6)
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Finished task 0.0 in stage 0.0 (TID 0) in 1362 ms on localhost (executor driver) (3/40)
+2022-02-04 13:15:50 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:201326592+33554432
+2022-02-04 13:15:50 INFO  Executor:54 - Finished task 1.0 in stage 0.0 (TID 1). 1189 bytes result sent to driver
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Starting task 7.0 in stage 0.0 (TID 7, localhost, executor driver, partition 7, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:50 INFO  Executor:54 - Running task 7.0 in stage 0.0 (TID 7)
+2022-02-04 13:15:50 INFO  TaskSetManager:54 - Finished task 1.0 in stage 0.0 (TID 1) in 1357 ms on localhost (executor driver) (4/40)
+2022-02-04 13:15:50 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:234881024+33554432
+2022-02-04 13:15:51 INFO  Executor:54 - Finished task 6.0 in stage 0.0 (TID 6). 1189 bytes result sent to driver
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Starting task 8.0 in stage 0.0 (TID 8, localhost, executor driver, partition 8, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:51 INFO  Executor:54 - Running task 8.0 in stage 0.0 (TID 8)
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Finished task 6.0 in stage 0.0 (TID 6) in 911 ms on localhost (executor driver) (5/40)
+2022-02-04 13:15:51 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:268435456+33554432
+2022-02-04 13:15:51 INFO  Executor:54 - Finished task 4.0 in stage 0.0 (TID 4). 1189 bytes result sent to driver
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Starting task 9.0 in stage 0.0 (TID 9, localhost, executor driver, partition 9, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:51 INFO  Executor:54 - Running task 9.0 in stage 0.0 (TID 9)
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Finished task 4.0 in stage 0.0 (TID 4) in 937 ms on localhost (executor driver) (6/40)
+2022-02-04 13:15:51 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:301989888+33554432
+2022-02-04 13:15:51 INFO  Executor:54 - Finished task 5.0 in stage 0.0 (TID 5). 1189 bytes result sent to driver
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Starting task 10.0 in stage 0.0 (TID 10, localhost, executor driver, partition 10, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:51 INFO  Executor:54 - Running task 10.0 in stage 0.0 (TID 10)
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Finished task 5.0 in stage 0.0 (TID 5) in 935 ms on localhost (executor driver) (7/40)
+2022-02-04 13:15:51 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:335544320+33554432
+2022-02-04 13:15:51 INFO  Executor:54 - Finished task 7.0 in stage 0.0 (TID 7). 1189 bytes result sent to driver
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Starting task 11.0 in stage 0.0 (TID 11, localhost, executor driver, partition 11, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:51 INFO  Executor:54 - Running task 11.0 in stage 0.0 (TID 11)
+2022-02-04 13:15:51 INFO  TaskSetManager:54 - Finished task 7.0 in stage 0.0 (TID 7) in 932 ms on localhost (executor driver) (8/40)
+2022-02-04 13:15:51 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:369098752+33554432
+2022-02-04 13:15:52 INFO  Executor:54 - Finished task 8.0 in stage 0.0 (TID 8). 1189 bytes result sent to driver
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Starting task 12.0 in stage 0.0 (TID 12, localhost, executor driver, partition 12, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:52 INFO  Executor:54 - Running task 12.0 in stage 0.0 (TID 12)
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Finished task 8.0 in stage 0.0 (TID 8) in 1067 ms on localhost (executor driver) (9/40)
+2022-02-04 13:15:52 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:402653184+33554432
+2022-02-04 13:15:52 INFO  Executor:54 - Finished task 9.0 in stage 0.0 (TID 9). 1189 bytes result sent to driver
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Starting task 13.0 in stage 0.0 (TID 13, localhost, executor driver, partition 13, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:52 INFO  Executor:54 - Running task 13.0 in stage 0.0 (TID 13)
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Finished task 9.0 in stage 0.0 (TID 9) in 1068 ms on localhost (executor driver) (10/40)
+2022-02-04 13:15:52 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:436207616+33554432
+2022-02-04 13:15:52 INFO  Executor:54 - Finished task 10.0 in stage 0.0 (TID 10). 1189 bytes result sent to driver
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Starting task 14.0 in stage 0.0 (TID 14, localhost, executor driver, partition 14, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Finished task 10.0 in stage 0.0 (TID 10) in 1091 ms on localhost (executor driver) (11/40)
+2022-02-04 13:15:52 INFO  Executor:54 - Running task 14.0 in stage 0.0 (TID 14)
+2022-02-04 13:15:52 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:469762048+33554432
+2022-02-04 13:15:52 INFO  Executor:54 - Finished task 11.0 in stage 0.0 (TID 11). 1189 bytes result sent to driver
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Starting task 15.0 in stage 0.0 (TID 15, localhost, executor driver, partition 15, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:52 INFO  Executor:54 - Running task 15.0 in stage 0.0 (TID 15)
+2022-02-04 13:15:52 INFO  TaskSetManager:54 - Finished task 11.0 in stage 0.0 (TID 11) in 1111 ms on localhost (executor driver) (12/40)
+2022-02-04 13:15:52 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:503316480+33554432
+2022-02-04 13:15:53 INFO  Executor:54 - Finished task 12.0 in stage 0.0 (TID 12). 1189 bytes result sent to driver
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Starting task 16.0 in stage 0.0 (TID 16, localhost, executor driver, partition 16, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:53 INFO  Executor:54 - Running task 16.0 in stage 0.0 (TID 16)
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Finished task 12.0 in stage 0.0 (TID 12) in 841 ms on localhost (executor driver) (13/40)
+2022-02-04 13:15:53 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:536870912+33554432
+2022-02-04 13:15:53 INFO  Executor:54 - Finished task 13.0 in stage 0.0 (TID 13). 1146 bytes result sent to driver
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Starting task 17.0 in stage 0.0 (TID 17, localhost, executor driver, partition 17, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Finished task 13.0 in stage 0.0 (TID 13) in 833 ms on localhost (executor driver) (14/40)
+2022-02-04 13:15:53 INFO  Executor:54 - Running task 17.0 in stage 0.0 (TID 17)
+2022-02-04 13:15:53 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:570425344+33554432
+2022-02-04 13:15:53 INFO  Executor:54 - Finished task 14.0 in stage 0.0 (TID 14). 1189 bytes result sent to driver
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Starting task 18.0 in stage 0.0 (TID 18, localhost, executor driver, partition 18, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Finished task 14.0 in stage 0.0 (TID 14) in 832 ms on localhost (executor driver) (15/40)
+2022-02-04 13:15:53 INFO  Executor:54 - Running task 18.0 in stage 0.0 (TID 18)
+2022-02-04 13:15:53 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:603979776+33554432
+2022-02-04 13:15:53 INFO  Executor:54 - Finished task 15.0 in stage 0.0 (TID 15). 1189 bytes result sent to driver
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Starting task 19.0 in stage 0.0 (TID 19, localhost, executor driver, partition 19, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:53 INFO  Executor:54 - Running task 19.0 in stage 0.0 (TID 19)
+2022-02-04 13:15:53 INFO  TaskSetManager:54 - Finished task 15.0 in stage 0.0 (TID 15) in 811 ms on localhost (executor driver) (16/40)
+2022-02-04 13:15:53 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:637534208+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 17.0 in stage 0.0 (TID 17). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 20.0 in stage 0.0 (TID 20, localhost, executor driver, partition 20, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 20.0 in stage 0.0 (TID 20)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 17.0 in stage 0.0 (TID 17) in 805 ms on localhost (executor driver) (17/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:671088640+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 16.0 in stage 0.0 (TID 16). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 21.0 in stage 0.0 (TID 21, localhost, executor driver, partition 21, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 21.0 in stage 0.0 (TID 21)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 16.0 in stage 0.0 (TID 16) in 827 ms on localhost (executor driver) (18/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:704643072+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 18.0 in stage 0.0 (TID 18). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 22.0 in stage 0.0 (TID 22, localhost, executor driver, partition 22, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 22.0 in stage 0.0 (TID 22)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 18.0 in stage 0.0 (TID 18) in 851 ms on localhost (executor driver) (19/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:738197504+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 19.0 in stage 0.0 (TID 19). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 23.0 in stage 0.0 (TID 23, localhost, executor driver, partition 23, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 23.0 in stage 0.0 (TID 23)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 19.0 in stage 0.0 (TID 19) in 867 ms on localhost (executor driver) (20/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:771751936+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 20.0 in stage 0.0 (TID 20). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 24.0 in stage 0.0 (TID 24, localhost, executor driver, partition 24, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 24.0 in stage 0.0 (TID 24)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 20.0 in stage 0.0 (TID 20) in 820 ms on localhost (executor driver) (21/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:805306368+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 21.0 in stage 0.0 (TID 21). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 25.0 in stage 0.0 (TID 25, localhost, executor driver, partition 25, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 25.0 in stage 0.0 (TID 25)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 21.0 in stage 0.0 (TID 21) in 829 ms on localhost (executor driver) (22/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:838860800+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 22.0 in stage 0.0 (TID 22). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 26.0 in stage 0.0 (TID 26, localhost, executor driver, partition 26, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 26.0 in stage 0.0 (TID 26)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 22.0 in stage 0.0 (TID 22) in 873 ms on localhost (executor driver) (23/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:872415232+33554432
+2022-02-04 13:15:54 INFO  Executor:54 - Finished task 23.0 in stage 0.0 (TID 23). 1189 bytes result sent to driver
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Starting task 27.0 in stage 0.0 (TID 27, localhost, executor driver, partition 27, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:54 INFO  Executor:54 - Running task 27.0 in stage 0.0 (TID 27)
+2022-02-04 13:15:54 INFO  TaskSetManager:54 - Finished task 23.0 in stage 0.0 (TID 23) in 861 ms on localhost (executor driver) (24/40)
+2022-02-04 13:15:54 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:905969664+33554432
+2022-02-04 13:15:55 INFO  Executor:54 - Finished task 24.0 in stage 0.0 (TID 24). 1189 bytes result sent to driver
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Starting task 28.0 in stage 0.0 (TID 28, localhost, executor driver, partition 28, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Finished task 24.0 in stage 0.0 (TID 24) in 826 ms on localhost (executor driver) (25/40)
+2022-02-04 13:15:55 INFO  Executor:54 - Running task 28.0 in stage 0.0 (TID 28)
+2022-02-04 13:15:55 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:939524096+33554432
+2022-02-04 13:15:55 INFO  Executor:54 - Finished task 25.0 in stage 0.0 (TID 25). 1189 bytes result sent to driver
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Starting task 29.0 in stage 0.0 (TID 29, localhost, executor driver, partition 29, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:55 INFO  Executor:54 - Running task 29.0 in stage 0.0 (TID 29)
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Finished task 25.0 in stage 0.0 (TID 25) in 843 ms on localhost (executor driver) (26/40)
+2022-02-04 13:15:55 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:973078528+33554432
+2022-02-04 13:15:55 INFO  Executor:54 - Finished task 26.0 in stage 0.0 (TID 26). 1146 bytes result sent to driver
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Starting task 30.0 in stage 0.0 (TID 30, localhost, executor driver, partition 30, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:55 INFO  Executor:54 - Running task 30.0 in stage 0.0 (TID 30)
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Finished task 26.0 in stage 0.0 (TID 26) in 910 ms on localhost (executor driver) (27/40)
+2022-02-04 13:15:55 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1006632960+33554432
+2022-02-04 13:15:55 INFO  Executor:54 - Finished task 27.0 in stage 0.0 (TID 27). 1146 bytes result sent to driver
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Starting task 31.0 in stage 0.0 (TID 31, localhost, executor driver, partition 31, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:55 INFO  Executor:54 - Running task 31.0 in stage 0.0 (TID 31)
+2022-02-04 13:15:55 INFO  TaskSetManager:54 - Finished task 27.0 in stage 0.0 (TID 27) in 907 ms on localhost (executor driver) (28/40)
+2022-02-04 13:15:55 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1040187392+33554432
+2022-02-04 13:15:56 INFO  Executor:54 - Finished task 28.0 in stage 0.0 (TID 28). 1189 bytes result sent to driver
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Starting task 32.0 in stage 0.0 (TID 32, localhost, executor driver, partition 32, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:56 INFO  Executor:54 - Running task 32.0 in stage 0.0 (TID 32)
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Finished task 28.0 in stage 0.0 (TID 28) in 850 ms on localhost (executor driver) (29/40)
+2022-02-04 13:15:56 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1073741824+33554432
+2022-02-04 13:15:56 INFO  Executor:54 - Finished task 29.0 in stage 0.0 (TID 29). 1146 bytes result sent to driver
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Starting task 33.0 in stage 0.0 (TID 33, localhost, executor driver, partition 33, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:56 INFO  Executor:54 - Running task 33.0 in stage 0.0 (TID 33)
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Finished task 29.0 in stage 0.0 (TID 29) in 860 ms on localhost (executor driver) (30/40)
+2022-02-04 13:15:56 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1107296256+33554432
+2022-02-04 13:15:56 INFO  Executor:54 - Finished task 31.0 in stage 0.0 (TID 31). 1146 bytes result sent to driver
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Starting task 34.0 in stage 0.0 (TID 34, localhost, executor driver, partition 34, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:56 INFO  Executor:54 - Running task 34.0 in stage 0.0 (TID 34)
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Finished task 31.0 in stage 0.0 (TID 31) in 806 ms on localhost (executor driver) (31/40)
+2022-02-04 13:15:56 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1140850688+33554432
+2022-02-04 13:15:56 INFO  Executor:54 - Finished task 30.0 in stage 0.0 (TID 30). 1146 bytes result sent to driver
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Starting task 35.0 in stage 0.0 (TID 35, localhost, executor driver, partition 35, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:56 INFO  Executor:54 - Running task 35.0 in stage 0.0 (TID 35)
+2022-02-04 13:15:56 INFO  TaskSetManager:54 - Finished task 30.0 in stage 0.0 (TID 30) in 812 ms on localhost (executor driver) (32/40)
+2022-02-04 13:15:56 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1174405120+33554432
+2022-02-04 13:15:57 INFO  Executor:54 - Finished task 32.0 in stage 0.0 (TID 32). 1189 bytes result sent to driver
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Starting task 36.0 in stage 0.0 (TID 36, localhost, executor driver, partition 36, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:57 INFO  Executor:54 - Running task 36.0 in stage 0.0 (TID 36)
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Finished task 32.0 in stage 0.0 (TID 32) in 812 ms on localhost (executor driver) (33/40)
+2022-02-04 13:15:57 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1207959552+33554432
+2022-02-04 13:15:57 INFO  Executor:54 - Finished task 33.0 in stage 0.0 (TID 33). 1189 bytes result sent to driver
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Starting task 37.0 in stage 0.0 (TID 37, localhost, executor driver, partition 37, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:57 INFO  Executor:54 - Running task 37.0 in stage 0.0 (TID 37)
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Finished task 33.0 in stage 0.0 (TID 33) in 819 ms on localhost (executor driver) (34/40)
+2022-02-04 13:15:57 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1241513984+33554432
+2022-02-04 13:15:57 INFO  Executor:54 - Finished task 35.0 in stage 0.0 (TID 35). 1189 bytes result sent to driver
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Starting task 38.0 in stage 0.0 (TID 38, localhost, executor driver, partition 38, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:57 INFO  Executor:54 - Running task 38.0 in stage 0.0 (TID 38)
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Finished task 35.0 in stage 0.0 (TID 35) in 828 ms on localhost (executor driver) (35/40)
+2022-02-04 13:15:57 INFO  Executor:54 - Finished task 34.0 in stage 0.0 (TID 34). 1189 bytes result sent to driver
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Starting task 39.0 in stage 0.0 (TID 39, localhost, executor driver, partition 39, PROCESS_LOCAL, 7923 bytes)
+2022-02-04 13:15:57 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1275068416+33554432
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Finished task 34.0 in stage 0.0 (TID 34) in 832 ms on localhost (executor driver) (36/40)
+2022-02-04 13:15:57 INFO  Executor:54 - Running task 39.0 in stage 0.0 (TID 39)
+2022-02-04 13:15:57 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/input/edges.csv:1308622848+10658977
+2022-02-04 13:15:57 INFO  Executor:54 - Finished task 39.0 in stage 0.0 (TID 39). 1189 bytes result sent to driver
+2022-02-04 13:15:57 INFO  TaskSetManager:54 - Finished task 39.0 in stage 0.0 (TID 39) in 240 ms on localhost (executor driver) (37/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 36.0 in stage 0.0 (TID 36). 1189 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 36.0 in stage 0.0 (TID 36) in 746 ms on localhost (executor driver) (38/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 37.0 in stage 0.0 (TID 37). 1189 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 37.0 in stage 0.0 (TID 37) in 747 ms on localhost (executor driver) (39/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 38.0 in stage 0.0 (TID 38). 1189 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 38.0 in stage 0.0 (TID 38) in 687 ms on localhost (executor driver) (40/40)
+2022-02-04 13:15:58 INFO  TaskSchedulerImpl:54 - Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - ShuffleMapStage 0 (map at WordCount.scala:50) finished in 9.220 s
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - looking for newly runnable stages
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - running: Set()
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - waiting: Set(ResultStage 1)
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - failed: Set()
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - Submitting ResultStage 1 (MapPartitionsRDD[6] at saveAsTextFile at WordCount.scala:53), which has no missing parents
+2022-02-04 13:15:58 INFO  MemoryStore:54 - Block broadcast_2 stored as values in memory (estimated size 147.3 KB, free 365.6 MB)
+2022-02-04 13:15:58 INFO  MemoryStore:54 - Block broadcast_2_piece0 stored as bytes in memory (estimated size 54.2 KB, free 365.6 MB)
+2022-02-04 13:15:58 INFO  BlockManagerInfo:54 - Added broadcast_2_piece0 in memory on 10.0.0.13:57358 (size: 54.2 KB, free: 366.2 MB)
+2022-02-04 13:15:58 INFO  SparkContext:54 - Created broadcast 2 from broadcast at DAGScheduler.scala:1039
+2022-02-04 13:15:58 INFO  DAGScheduler:54 - Submitting 40 missing tasks from ResultStage 1 (MapPartitionsRDD[6] at saveAsTextFile at WordCount.scala:53) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+2022-02-04 13:15:58 INFO  TaskSchedulerImpl:54 - Adding task set 1.0 with 40 tasks
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 0.0 in stage 1.0 (TID 40, localhost, executor driver, partition 0, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 1.0 in stage 1.0 (TID 41, localhost, executor driver, partition 1, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 2.0 in stage 1.0 (TID 42, localhost, executor driver, partition 2, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 3.0 in stage 1.0 (TID 43, localhost, executor driver, partition 3, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 1.0 in stage 1.0 (TID 41)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 3.0 in stage 1.0 (TID 43)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 0.0 in stage 1.0 (TID 40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 2.0 in stage 1.0 (TID 42)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 38 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 38 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 8 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 7 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 8 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 8 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000003_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000002_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000000_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000001_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000003_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000001_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000000_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000002_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 0.0 in stage 1.0 (TID 40). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 2.0 in stage 1.0 (TID 42). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 1.0 in stage 1.0 (TID 41). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 3.0 in stage 1.0 (TID 43). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 4.0 in stage 1.0 (TID 44, localhost, executor driver, partition 4, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 4.0 in stage 1.0 (TID 44)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 5.0 in stage 1.0 (TID 45, localhost, executor driver, partition 5, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 0.0 in stage 1.0 (TID 40) in 187 ms on localhost (executor driver) (1/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 5.0 in stage 1.0 (TID 45)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 2.0 in stage 1.0 (TID 42) in 185 ms on localhost (executor driver) (2/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 6.0 in stage 1.0 (TID 46, localhost, executor driver, partition 6, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 6.0 in stage 1.0 (TID 46)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 1.0 in stage 1.0 (TID 41) in 188 ms on localhost (executor driver) (3/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 7.0 in stage 1.0 (TID 47, localhost, executor driver, partition 7, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 3.0 in stage 1.0 (TID 43) in 188 ms on localhost (executor driver) (4/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 7.0 in stage 1.0 (TID 47)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000006_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000006_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000005_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000004_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000007_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000007_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000004_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000005_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 6.0 in stage 1.0 (TID 46). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 7.0 in stage 1.0 (TID 47). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 4.0 in stage 1.0 (TID 44). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 5.0 in stage 1.0 (TID 45). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 8.0 in stage 1.0 (TID 48, localhost, executor driver, partition 8, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 8.0 in stage 1.0 (TID 48)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 9.0 in stage 1.0 (TID 49, localhost, executor driver, partition 9, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 6.0 in stage 1.0 (TID 46) in 91 ms on localhost (executor driver) (5/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 9.0 in stage 1.0 (TID 49)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 7.0 in stage 1.0 (TID 47) in 89 ms on localhost (executor driver) (6/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 10.0 in stage 1.0 (TID 50, localhost, executor driver, partition 10, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 10.0 in stage 1.0 (TID 50)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 11.0 in stage 1.0 (TID 51, localhost, executor driver, partition 11, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 4.0 in stage 1.0 (TID 44) in 94 ms on localhost (executor driver) (7/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 11.0 in stage 1.0 (TID 51)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 5.0 in stage 1.0 (TID 45) in 93 ms on localhost (executor driver) (8/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 38 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000011_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000010_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000011_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000008_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000009_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000010_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000009_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000008_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 11.0 in stage 1.0 (TID 51). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 10.0 in stage 1.0 (TID 50). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 9.0 in stage 1.0 (TID 49). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 8.0 in stage 1.0 (TID 48). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 12.0 in stage 1.0 (TID 52, localhost, executor driver, partition 12, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 12.0 in stage 1.0 (TID 52)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 13.0 in stage 1.0 (TID 53, localhost, executor driver, partition 13, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 11.0 in stage 1.0 (TID 51) in 82 ms on localhost (executor driver) (9/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 13.0 in stage 1.0 (TID 53)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 10.0 in stage 1.0 (TID 50) in 83 ms on localhost (executor driver) (10/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 14.0 in stage 1.0 (TID 54, localhost, executor driver, partition 14, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 14.0 in stage 1.0 (TID 54)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 15.0 in stage 1.0 (TID 55, localhost, executor driver, partition 15, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 9.0 in stage 1.0 (TID 49) in 84 ms on localhost (executor driver) (11/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 15.0 in stage 1.0 (TID 55)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 8.0 in stage 1.0 (TID 48) in 85 ms on localhost (executor driver) (12/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000012_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000012_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 12.0 in stage 1.0 (TID 52). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000015_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000014_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000015_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000013_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 16.0 in stage 1.0 (TID 56, localhost, executor driver, partition 16, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000014_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000013_0: Committed
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 12.0 in stage 1.0 (TID 52) in 96 ms on localhost (executor driver) (13/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 16.0 in stage 1.0 (TID 56)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 15.0 in stage 1.0 (TID 55). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 14.0 in stage 1.0 (TID 54). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 13.0 in stage 1.0 (TID 53). 1502 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 17.0 in stage 1.0 (TID 57, localhost, executor driver, partition 17, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 17.0 in stage 1.0 (TID 57)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 18.0 in stage 1.0 (TID 58, localhost, executor driver, partition 18, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 15.0 in stage 1.0 (TID 55) in 95 ms on localhost (executor driver) (14/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 18.0 in stage 1.0 (TID 58)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 14.0 in stage 1.0 (TID 54) in 97 ms on localhost (executor driver) (15/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 19.0 in stage 1.0 (TID 59, localhost, executor driver, partition 19, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 19.0 in stage 1.0 (TID 59)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 13.0 in stage 1.0 (TID 53) in 99 ms on localhost (executor driver) (16/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 38 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000018_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000018_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000016_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000016_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000019_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000017_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000019_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 18.0 in stage 1.0 (TID 58). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 16.0 in stage 1.0 (TID 56). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000017_0: Committed
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 20.0 in stage 1.0 (TID 60, localhost, executor driver, partition 20, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 19.0 in stage 1.0 (TID 59). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 20.0 in stage 1.0 (TID 60)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 17.0 in stage 1.0 (TID 57). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 21.0 in stage 1.0 (TID 61, localhost, executor driver, partition 21, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 18.0 in stage 1.0 (TID 58) in 75 ms on localhost (executor driver) (17/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 21.0 in stage 1.0 (TID 61)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 16.0 in stage 1.0 (TID 56) in 76 ms on localhost (executor driver) (18/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 22.0 in stage 1.0 (TID 62, localhost, executor driver, partition 22, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 22.0 in stage 1.0 (TID 62)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 23.0 in stage 1.0 (TID 63, localhost, executor driver, partition 23, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 19.0 in stage 1.0 (TID 59) in 75 ms on localhost (executor driver) (19/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 23.0 in stage 1.0 (TID 63)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 17.0 in stage 1.0 (TID 57) in 77 ms on localhost (executor driver) (20/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 37 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000022_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000020_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000022_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000021_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000020_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000021_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000023_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 22.0 in stage 1.0 (TID 62). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 20.0 in stage 1.0 (TID 60). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 21.0 in stage 1.0 (TID 61). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000023_0: Committed
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 24.0 in stage 1.0 (TID 64, localhost, executor driver, partition 24, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 24.0 in stage 1.0 (TID 64)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 23.0 in stage 1.0 (TID 63). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 25.0 in stage 1.0 (TID 65, localhost, executor driver, partition 25, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 22.0 in stage 1.0 (TID 62) in 75 ms on localhost (executor driver) (21/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 25.0 in stage 1.0 (TID 65)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 20.0 in stage 1.0 (TID 60) in 77 ms on localhost (executor driver) (22/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 26.0 in stage 1.0 (TID 66, localhost, executor driver, partition 26, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 26.0 in stage 1.0 (TID 66)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 21.0 in stage 1.0 (TID 61) in 77 ms on localhost (executor driver) (23/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 27.0 in stage 1.0 (TID 67, localhost, executor driver, partition 27, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 23.0 in stage 1.0 (TID 63) in 77 ms on localhost (executor driver) (24/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 27.0 in stage 1.0 (TID 67)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000024_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000024_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 24.0 in stage 1.0 (TID 64). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 28.0 in stage 1.0 (TID 68, localhost, executor driver, partition 28, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 28.0 in stage 1.0 (TID 68)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 24.0 in stage 1.0 (TID 64) in 61 ms on localhost (executor driver) (25/40)
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000026_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000026_0: Committed
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000027_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000027_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 26.0 in stage 1.0 (TID 66). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000025_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000025_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 27.0 in stage 1.0 (TID 67). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 29.0 in stage 1.0 (TID 69, localhost, executor driver, partition 29, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 29.0 in stage 1.0 (TID 69)
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 25.0 in stage 1.0 (TID 65). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 30.0 in stage 1.0 (TID 70, localhost, executor driver, partition 30, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 26.0 in stage 1.0 (TID 66) in 66 ms on localhost (executor driver) (26/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 30.0 in stage 1.0 (TID 70)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 27.0 in stage 1.0 (TID 67) in 65 ms on localhost (executor driver) (27/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 31.0 in stage 1.0 (TID 71, localhost, executor driver, partition 31, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 31.0 in stage 1.0 (TID 71)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 25.0 in stage 1.0 (TID 65) in 68 ms on localhost (executor driver) (28/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000028_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000028_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 28.0 in stage 1.0 (TID 68). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 32.0 in stage 1.0 (TID 72, localhost, executor driver, partition 32, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 32.0 in stage 1.0 (TID 72)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 28.0 in stage 1.0 (TID 68) in 55 ms on localhost (executor driver) (29/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000031_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000030_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000029_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000031_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000029_0: Committed
+2022-02-04 13:15:58 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000030_0: Committed
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 31.0 in stage 1.0 (TID 71). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 29.0 in stage 1.0 (TID 69). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  Executor:54 - Finished task 30.0 in stage 1.0 (TID 70). 1459 bytes result sent to driver
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 33.0 in stage 1.0 (TID 73, localhost, executor driver, partition 33, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 33.0 in stage 1.0 (TID 73)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 34.0 in stage 1.0 (TID 74, localhost, executor driver, partition 34, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 31.0 in stage 1.0 (TID 71) in 62 ms on localhost (executor driver) (30/40)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 34.0 in stage 1.0 (TID 74)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 29.0 in stage 1.0 (TID 69) in 63 ms on localhost (executor driver) (31/40)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Starting task 35.0 in stage 1.0 (TID 75, localhost, executor driver, partition 35, ANY, 7649 bytes)
+2022-02-04 13:15:58 INFO  Executor:54 - Running task 35.0 in stage 1.0 (TID 75)
+2022-02-04 13:15:58 INFO  TaskSetManager:54 - Finished task 30.0 in stage 1.0 (TID 70) in 62 ms on localhost (executor driver) (32/40)
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:58 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 11 ms
+2022-02-04 13:15:58 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:58 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000032_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000032_0: Committed
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 32.0 in stage 1.0 (TID 72). 1502 bytes result sent to driver
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Starting task 36.0 in stage 1.0 (TID 76, localhost, executor driver, partition 36, ANY, 7649 bytes)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 32.0 in stage 1.0 (TID 72) in 91 ms on localhost (executor driver) (33/40)
+2022-02-04 13:15:59 INFO  Executor:54 - Running task 36.0 in stage 1.0 (TID 76)
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000033_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000033_0: Committed
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 33.0 in stage 1.0 (TID 73). 1502 bytes result sent to driver
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Starting task 37.0 in stage 1.0 (TID 77, localhost, executor driver, partition 37, ANY, 7649 bytes)
+2022-02-04 13:15:59 INFO  Executor:54 - Running task 37.0 in stage 1.0 (TID 77)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 33.0 in stage 1.0 (TID 73) in 91 ms on localhost (executor driver) (34/40)
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000035_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000035_0: Committed
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000034_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000034_0: Committed
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 35.0 in stage 1.0 (TID 75). 1502 bytes result sent to driver
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 34.0 in stage 1.0 (TID 74). 1502 bytes result sent to driver
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Starting task 38.0 in stage 1.0 (TID 78, localhost, executor driver, partition 38, ANY, 7649 bytes)
+2022-02-04 13:15:59 INFO  Executor:54 - Running task 38.0 in stage 1.0 (TID 78)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Starting task 39.0 in stage 1.0 (TID 79, localhost, executor driver, partition 39, ANY, 7649 bytes)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 35.0 in stage 1.0 (TID 75) in 94 ms on localhost (executor driver) (35/40)
+2022-02-04 13:15:59 INFO  Executor:54 - Running task 39.0 in stage 1.0 (TID 79)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 34.0 in stage 1.0 (TID 74) in 95 ms on localhost (executor driver) (36/40)
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 0 ms
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Getting 39 non-empty blocks out of 40 blocks
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Getting 40 non-empty blocks out of 40 blocks
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:59 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 1 ms
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-02-04 13:15:59 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000036_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000036_0: Committed
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 36.0 in stage 1.0 (TID 76). 1459 bytes result sent to driver
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 36.0 in stage 1.0 (TID 76) in 56 ms on localhost (executor driver) (37/40)
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000037_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000037_0: Committed
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000039_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000039_0: Committed
+2022-02-04 13:15:59 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220204131548_0006_m_000038_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-1-spark-barkhasaxena/output
+2022-02-04 13:15:59 INFO  SparkHadoopMapRedUtil:54 - attempt_20220204131548_0006_m_000038_0: Committed
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 37.0 in stage 1.0 (TID 77). 1459 bytes result sent to driver
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 39.0 in stage 1.0 (TID 79). 1459 bytes result sent to driver
+2022-02-04 13:15:59 INFO  Executor:54 - Finished task 38.0 in stage 1.0 (TID 78). 1459 bytes result sent to driver
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 37.0 in stage 1.0 (TID 77) in 58 ms on localhost (executor driver) (38/40)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 39.0 in stage 1.0 (TID 79) in 54 ms on localhost (executor driver) (39/40)
+2022-02-04 13:15:59 INFO  TaskSetManager:54 - Finished task 38.0 in stage 1.0 (TID 78) in 55 ms on localhost (executor driver) (40/40)
+2022-02-04 13:15:59 INFO  TaskSchedulerImpl:54 - Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2022-02-04 13:15:59 INFO  DAGScheduler:54 - ResultStage 1 (runJob at SparkHadoopWriter.scala:78) finished in 0.913 s
+2022-02-04 13:15:59 INFO  DAGScheduler:54 - Job 0 finished: runJob at SparkHadoopWriter.scala:78, took 10.176165 s
+2022-02-04 13:15:59 INFO  SparkHadoopWriter:54 - Job job_20220204131548_0006 committed.
+2022-02-04 13:15:59 INFO  SparkContext:54 - Invoking stop() from shutdown hook
+2022-02-04 13:15:59 INFO  AbstractConnector:318 - Stopped Spark@797501a{HTTP/1.1,[http/1.1]}{0.0.0.0:4041}
+2022-02-04 13:15:59 INFO  SparkUI:54 - Stopped Spark web UI at http://10.0.0.13:4041
+2022-02-04 13:15:59 INFO  MapOutputTrackerMasterEndpoint:54 - MapOutputTrackerMasterEndpoint stopped!
+2022-02-04 13:15:59 INFO  MemoryStore:54 - MemoryStore cleared
+2022-02-04 13:15:59 INFO  BlockManager:54 - BlockManager stopped
+2022-02-04 13:15:59 INFO  BlockManagerMaster:54 - BlockManagerMaster stopped
+2022-02-04 13:15:59 INFO  OutputCommitCoordinator$OutputCommitCoordinatorEndpoint:54 - OutputCommitCoordinator stopped!
+2022-02-04 13:15:59 INFO  SparkContext:54 - Successfully stopped SparkContext
+2022-02-04 13:15:59 INFO  ShutdownHookManager:54 - Shutdown hook called
+2022-02-04 13:15:59 INFO  ShutdownHookManager:54 - Deleting directory /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-774a78fe-243b-4f08-90ec-6c8724382363
+2022-02-04 13:15:59 INFO  ShutdownHookManager:54 - Deleting directory /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-8b1c7923-8dc1-4f6f-bcca-7b2206aa673e

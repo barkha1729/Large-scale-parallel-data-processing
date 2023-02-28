@@ -1,0 +1,376 @@
+mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< cs6240:spark-demo >--------------------------
+[INFO] Building spark-demo 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for commons-codec:commons-codec:jar:1.15-SNAPSHOT is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ spark-demo ---
+[INFO] Deleting /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ spark-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ spark-demo ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- scala-maven-plugin:3.3.1:compile (default) @ spark-demo ---
+[WARNING]  Expected all dependencies to require Scala version: 2.11.12
+[WARNING]  cs6240:spark-demo:1.0 requires scala version: 2.11.12
+[WARNING]  com.twitter:chill_2.11:0.8.4 requires scala version: 2.11.8
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/target/classes at 1646451090336
+[WARNING] warning: there was one deprecation warning; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 2 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ spark-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ spark-demo ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ spark-demo ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ spark-demo ---
+[INFO] Building jar: /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/target/spark-demo-1.0.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:3.1.0:shade (default) @ spark-demo ---
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/target/spark-demo-1.0.jar with /Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/target/spark-demo-1.0-shaded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.704 s
+[INFO] Finished at: 2022-03-04T22:31:33-05:00
+[INFO] ------------------------------------------------------------------------
+cp target/spark-demo-1.0.jar spark-demo.jar
+rm -rf output*
+spark-submit --class repjoin.RepJoinDatasetMain --master local[4] --name "RDD Replicated join" spark-demo.jar input output
+2022-03-04 22:31:35 WARN  Utils:66 - Your hostname, Barkhas-MacBook-Pro.local resolves to a loopback address: 127.0.0.1; using 10.0.0.13 instead (on interface en0)
+2022-03-04 22:31:35 WARN  Utils:66 - Set SPARK_LOCAL_IP if you need to bind to another address
+2022-03-04 22:31:35 WARN  NativeCodeLoader:60 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2022-03-04 22:31:35 INFO  SparkContext:54 - Running Spark version 2.3.1
+2022-03-04 22:31:35 INFO  SparkContext:54 - Submitted application: RepJoinD
+2022-03-04 22:31:35 INFO  SecurityManager:54 - Changing view acls to: maverick
+2022-03-04 22:31:35 INFO  SecurityManager:54 - Changing modify acls to: maverick
+2022-03-04 22:31:35 INFO  SecurityManager:54 - Changing view acls groups to: 
+2022-03-04 22:31:35 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2022-03-04 22:31:35 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(maverick); groups with view permissions: Set(); users  with modify permissions: Set(maverick); groups with modify permissions: Set()
+2022-03-04 22:31:35 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 55909.
+2022-03-04 22:31:36 INFO  SparkEnv:54 - Registering MapOutputTracker
+2022-03-04 22:31:36 INFO  SparkEnv:54 - Registering BlockManagerMaster
+2022-03-04 22:31:36 INFO  BlockManagerMasterEndpoint:54 - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2022-03-04 22:31:36 INFO  BlockManagerMasterEndpoint:54 - BlockManagerMasterEndpoint up
+2022-03-04 22:31:36 INFO  DiskBlockManager:54 - Created local directory at /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/blockmgr-07da15fd-a9a0-4a78-9d17-2bc108afc33b
+2022-03-04 22:31:36 INFO  MemoryStore:54 - MemoryStore started with capacity 366.3 MB
+2022-03-04 22:31:36 INFO  SparkEnv:54 - Registering OutputCommitCoordinator
+2022-03-04 22:31:36 INFO  log:192 - Logging initialized @2031ms
+2022-03-04 22:31:36 INFO  Server:346 - jetty-9.3.z-SNAPSHOT
+2022-03-04 22:31:36 INFO  Server:414 - Started @2090ms
+2022-03-04 22:31:36 INFO  AbstractConnector:278 - Started ServerConnector@73393584{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2022-03-04 22:31:36 INFO  Utils:54 - Successfully started service 'SparkUI' on port 4040.
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@6c451c9c{/jobs,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@f5c79a6{/jobs/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@669253b7{/jobs/job,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@51a06cbe{/jobs/job/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3dddbe65{/stages,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@49a64d82{/stages/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@344561e0{/stages/stage,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@4d9d1b69{/stages/stage/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@52c8295b{/stages/pool,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@251f7d26{/stages/pool/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@77b21474{/storage,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@52d10fb8{/storage/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@41c07648{/storage/rdd,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1fe8d51b{/storage/rdd/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@781e7326{/environment,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@22680f52{/environment/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@60d84f61{/executors,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@39c11e6c{/executors/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@324dcd31{/executors/threadDump,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@503d56b5{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@72bca894{/static,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2f40a43{/,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3caa4757{/api,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@547e29a4{/jobs/job/kill,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1c807b1d{/stages/stage/kill,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  SparkUI:54 - Bound SparkUI to 0.0.0.0, and started at http://10.0.0.13:4040
+2022-03-04 22:31:36 INFO  SparkContext:54 - Added JAR file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/spark-demo.jar at spark://10.0.0.13:55909/jars/spark-demo.jar with timestamp 1646451096291
+2022-03-04 22:31:36 INFO  Executor:54 - Starting executor ID driver on host localhost
+2022-03-04 22:31:36 INFO  Utils:54 - Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 55910.
+2022-03-04 22:31:36 INFO  NettyBlockTransferService:54 - Server created on 10.0.0.13:55910
+2022-03-04 22:31:36 INFO  BlockManager:54 - Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2022-03-04 22:31:36 INFO  BlockManagerMaster:54 - Registering BlockManager BlockManagerId(driver, 10.0.0.13, 55910, None)
+2022-03-04 22:31:36 INFO  BlockManagerMasterEndpoint:54 - Registering block manager 10.0.0.13:55910 with 366.3 MB RAM, BlockManagerId(driver, 10.0.0.13, 55910, None)
+2022-03-04 22:31:36 INFO  BlockManagerMaster:54 - Registered BlockManager BlockManagerId(driver, 10.0.0.13, 55910, None)
+2022-03-04 22:31:36 INFO  BlockManager:54 - Initialized BlockManager: BlockManagerId(driver, 10.0.0.13, 55910, None)
+2022-03-04 22:31:36 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3703bf3c{/metrics/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:36 INFO  MemoryStore:54 - Block broadcast_0 stored as values in memory (estimated size 483.7 KB, free 365.8 MB)
+2022-03-04 22:31:37 INFO  MemoryStore:54 - Block broadcast_0_piece0 stored as bytes in memory (estimated size 51.1 KB, free 365.8 MB)
+2022-03-04 22:31:37 INFO  BlockManagerInfo:54 - Added broadcast_0_piece0 in memory on 10.0.0.13:55910 (size: 51.1 KB, free: 366.3 MB)
+2022-03-04 22:31:37 INFO  SparkContext:54 - Created broadcast 0 from textFile at RepJoinDataset.scala:25
+2022-03-04 22:31:38 INFO  SharedState:54 - Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/spark-warehouse/').
+2022-03-04 22:31:38 INFO  SharedState:54 - Warehouse path is 'file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/spark-warehouse/'.
+2022-03-04 22:31:38 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3554bdc0{/SQL,null,AVAILABLE,@Spark}
+2022-03-04 22:31:38 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3a3b10f4{/SQL/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:38 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@20a24edf{/SQL/execution,null,AVAILABLE,@Spark}
+2022-03-04 22:31:38 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@29962b2f{/SQL/execution/json,null,AVAILABLE,@Spark}
+2022-03-04 22:31:38 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@764fffa0{/static/sql,null,AVAILABLE,@Spark}
+2022-03-04 22:31:38 INFO  StateStoreCoordinatorRef:54 - Registered StateStoreCoordinator endpoint
+2022-03-04 22:31:39 INFO  ContextCleaner:54 - Cleaned accumulator 0
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 225.461182 ms
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 225.45747 ms
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 225.465897 ms
+2022-03-04 22:31:39 INFO  FileInputFormat:266 - Total input files to process : 1
+2022-03-04 22:31:39 INFO  FileInputFormat:266 - Total input files to process : 1
+2022-03-04 22:31:39 INFO  SparkContext:54 - Starting job: run at ThreadPoolExecutor.java:1149
+2022-03-04 22:31:39 INFO  SparkContext:54 - Starting job: run at ThreadPoolExecutor.java:1149
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Got job 0 (run at ThreadPoolExecutor.java:1149) with 2 output partitions
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Final stage: ResultStage 0 (run at ThreadPoolExecutor.java:1149)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Parents of final stage: List()
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Missing parents: List()
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting ResultStage 0 (MapPartitionsRDD[10] at run at ThreadPoolExecutor.java:1149), which has no missing parents
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_1 stored as values in memory (estimated size 13.6 KB, free 365.8 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_1_piece0 stored as bytes in memory (estimated size 6.7 KB, free 365.8 MB)
+2022-03-04 22:31:39 INFO  BlockManagerInfo:54 - Added broadcast_1_piece0 in memory on 10.0.0.13:55910 (size: 6.7 KB, free: 366.2 MB)
+2022-03-04 22:31:39 INFO  SparkContext:54 - Created broadcast 1 from broadcast at DAGScheduler.scala:1039
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting 2 missing tasks from ResultStage 0 (MapPartitionsRDD[10] at run at ThreadPoolExecutor.java:1149) (first 15 tasks are for partitions Vector(0, 1))
+2022-03-04 22:31:39 INFO  TaskSchedulerImpl:54 - Adding task set 0.0 with 2 tasks
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Got job 1 (run at ThreadPoolExecutor.java:1149) with 2 output partitions
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Final stage: ResultStage 1 (run at ThreadPoolExecutor.java:1149)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Parents of final stage: List()
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Missing parents: List()
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting ResultStage 1 (MapPartitionsRDD[11] at run at ThreadPoolExecutor.java:1149), which has no missing parents
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_2 stored as values in memory (estimated size 13.7 KB, free 365.7 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_2_piece0 stored as bytes in memory (estimated size 6.6 KB, free 365.7 MB)
+2022-03-04 22:31:39 INFO  BlockManagerInfo:54 - Added broadcast_2_piece0 in memory on 10.0.0.13:55910 (size: 6.6 KB, free: 366.2 MB)
+2022-03-04 22:31:39 INFO  SparkContext:54 - Created broadcast 2 from broadcast at DAGScheduler.scala:1039
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting 2 missing tasks from ResultStage 1 (MapPartitionsRDD[11] at run at ThreadPoolExecutor.java:1149) (first 15 tasks are for partitions Vector(0, 1))
+2022-03-04 22:31:39 INFO  TaskSchedulerImpl:54 - Adding task set 1.0 with 2 tasks
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, PROCESS_LOCAL, 7943 bytes)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 1.0 in stage 0.0 (TID 1, localhost, executor driver, partition 1, PROCESS_LOCAL, 7943 bytes)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 0.0 in stage 1.0 (TID 2, localhost, executor driver, partition 0, PROCESS_LOCAL, 7943 bytes)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 1.0 in stage 1.0 (TID 3, localhost, executor driver, partition 1, PROCESS_LOCAL, 7943 bytes)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 1.0 in stage 1.0 (TID 3)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 1.0 in stage 0.0 (TID 1)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 0.0 in stage 0.0 (TID 0)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 0.0 in stage 1.0 (TID 2)
+2022-03-04 22:31:39 INFO  Executor:54 - Fetching spark://10.0.0.13:55909/jars/spark-demo.jar with timestamp 1646451096291
+2022-03-04 22:31:39 INFO  TransportClientFactory:267 - Successfully created connection to /10.0.0.13:55909 after 35 ms (0 ms spent in bootstraps)
+2022-03-04 22:31:39 INFO  Utils:54 - Fetching spark://10.0.0.13:55909/jars/spark-demo.jar to /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-1f5b3644-5d5c-4996-8f9a-6b1a6f1078bc/userFiles-2ffc898b-9924-47ca-9347-3618fa450891/fetchFileTemp6693955038200726034.tmp
+2022-03-04 22:31:39 INFO  Executor:54 - Adding file:/private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-1f5b3644-5d5c-4996-8f9a-6b1a6f1078bc/userFiles-2ffc898b-9924-47ca-9347-3618fa450891/spark-demo.jar to class loader
+2022-03-04 22:31:39 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:0+40
+2022-03-04 22:31:39 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:40+41
+2022-03-04 22:31:39 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:40+41
+2022-03-04 22:31:39 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:0+40
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 8.444352 ms
+2022-03-04 22:31:39 INFO  LineRecordReader:234 - Found UTF-8 BOM and skipped it
+2022-03-04 22:31:39 INFO  LineRecordReader:234 - Found UTF-8 BOM and skipped it
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 19.31257 ms
+2022-03-04 22:31:39 INFO  Executor:54 - Finished task 1.0 in stage 1.0 (TID 3). 1480 bytes result sent to driver
+2022-03-04 22:31:39 INFO  Executor:54 - Finished task 0.0 in stage 0.0 (TID 0). 1459 bytes result sent to driver
+2022-03-04 22:31:39 INFO  Executor:54 - Finished task 0.0 in stage 1.0 (TID 2). 1498 bytes result sent to driver
+2022-03-04 22:31:39 INFO  Executor:54 - Finished task 1.0 in stage 0.0 (TID 1). 1475 bytes result sent to driver
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Finished task 0.0 in stage 1.0 (TID 2) in 263 ms on localhost (executor driver) (1/2)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Finished task 1.0 in stage 1.0 (TID 3) in 266 ms on localhost (executor driver) (2/2)
+2022-03-04 22:31:39 INFO  TaskSchedulerImpl:54 - Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Finished task 0.0 in stage 0.0 (TID 0) in 289 ms on localhost (executor driver) (1/2)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Finished task 1.0 in stage 0.0 (TID 1) in 275 ms on localhost (executor driver) (2/2)
+2022-03-04 22:31:39 INFO  TaskSchedulerImpl:54 - Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - ResultStage 1 (run at ThreadPoolExecutor.java:1149) finished in 0.304 s
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Job 1 finished: run at ThreadPoolExecutor.java:1149, took 0.378212 s
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - ResultStage 0 (run at ThreadPoolExecutor.java:1149) finished in 0.343 s
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Job 0 finished: run at ThreadPoolExecutor.java:1149, took 0.378869 s
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 7.235637 ms
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 7.520542 ms
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_4 stored as values in memory (estimated size 4.0 MB, free 357.7 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_3 stored as values in memory (estimated size 4.0 MB, free 357.7 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_3_piece0 stored as bytes in memory (estimated size 234.0 B, free 357.7 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_4_piece0 stored as bytes in memory (estimated size 231.0 B, free 357.7 MB)
+2022-03-04 22:31:39 INFO  BlockManagerInfo:54 - Added broadcast_3_piece0 in memory on 10.0.0.13:55910 (size: 234.0 B, free: 366.2 MB)
+2022-03-04 22:31:39 INFO  BlockManagerInfo:54 - Added broadcast_4_piece0 in memory on 10.0.0.13:55910 (size: 231.0 B, free: 366.2 MB)
+2022-03-04 22:31:39 INFO  SparkContext:54 - Created broadcast 3 from run at ThreadPoolExecutor.java:1149
+2022-03-04 22:31:39 INFO  SparkContext:54 - Created broadcast 4 from run at ThreadPoolExecutor.java:1149
+2022-03-04 22:31:39 INFO  CodeGenerator:54 - Code generated in 27.560491 ms
+2022-03-04 22:31:39 INFO  SparkContext:54 - Starting job: count at RepJoinDataset.scala:54
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Registering RDD 14 (count at RepJoinDataset.scala:54)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Got job 2 (count at RepJoinDataset.scala:54) with 1 output partitions
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Final stage: ResultStage 3 (count at RepJoinDataset.scala:54)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Parents of final stage: List(ShuffleMapStage 2)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Missing parents: List(ShuffleMapStage 2)
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting ShuffleMapStage 2 (MapPartitionsRDD[14] at count at RepJoinDataset.scala:54), which has no missing parents
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_5 stored as values in memory (estimated size 23.3 KB, free 357.7 MB)
+2022-03-04 22:31:39 INFO  MemoryStore:54 - Block broadcast_5_piece0 stored as bytes in memory (estimated size 9.6 KB, free 357.7 MB)
+2022-03-04 22:31:39 INFO  BlockManagerInfo:54 - Added broadcast_5_piece0 in memory on 10.0.0.13:55910 (size: 9.6 KB, free: 366.2 MB)
+2022-03-04 22:31:39 INFO  SparkContext:54 - Created broadcast 5 from broadcast at DAGScheduler.scala:1039
+2022-03-04 22:31:39 INFO  DAGScheduler:54 - Submitting 2 missing tasks from ShuffleMapStage 2 (MapPartitionsRDD[14] at count at RepJoinDataset.scala:54) (first 15 tasks are for partitions Vector(0, 1))
+2022-03-04 22:31:39 INFO  TaskSchedulerImpl:54 - Adding task set 2.0 with 2 tasks
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 0.0 in stage 2.0 (TID 4, localhost, executor driver, partition 0, PROCESS_LOCAL, 7932 bytes)
+2022-03-04 22:31:39 INFO  TaskSetManager:54 - Starting task 1.0 in stage 2.0 (TID 5, localhost, executor driver, partition 1, PROCESS_LOCAL, 7932 bytes)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 0.0 in stage 2.0 (TID 4)
+2022-03-04 22:31:39 INFO  Executor:54 - Running task 1.0 in stage 2.0 (TID 5)
+2022-03-04 22:31:40 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:40+41
+2022-03-04 22:31:40 INFO  HadoopRDD:54 - Input split: file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/input/dummyEdges.csv:0+40
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 72
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 75
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 42
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 61
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 55
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 76
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 83
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 66
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 37
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 69
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 81
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 63
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 82
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 54
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 34
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 77
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 44
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 47
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 57
+2022-03-04 22:31:40 INFO  LineRecordReader:234 - Found UTF-8 BOM and skipped it
+2022-03-04 22:31:40 INFO  BlockManagerInfo:54 - Removed broadcast_1_piece0 on 10.0.0.13:55910 in memory (size: 6.7 KB, free: 366.2 MB)
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 46
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 78
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 51
+2022-03-04 22:31:40 INFO  BlockManagerInfo:54 - Removed broadcast_2_piece0 on 10.0.0.13:55910 in memory (size: 6.6 KB, free: 366.2 MB)
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 74
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 80
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 39
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 59
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 64
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 58
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 52
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 71
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 60
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 50
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 38
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 35
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 53
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 40
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 48
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 67
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 43
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 73
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 36
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 68
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 70
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 45
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 49
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 62
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 79
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 56
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 65
+2022-03-04 22:31:40 INFO  ContextCleaner:54 - Cleaned accumulator 41
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 0.0 in stage 2.0 (TID 4). 2085 bytes result sent to driver
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 1.0 in stage 2.0 (TID 5). 2085 bytes result sent to driver
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 0.0 in stage 2.0 (TID 4) in 72 ms on localhost (executor driver) (1/2)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 1.0 in stage 2.0 (TID 5) in 72 ms on localhost (executor driver) (2/2)
+2022-03-04 22:31:40 INFO  TaskSchedulerImpl:54 - Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - ShuffleMapStage 2 (count at RepJoinDataset.scala:54) finished in 0.085 s
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - looking for newly runnable stages
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - running: Set()
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - waiting: Set(ResultStage 3)
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - failed: Set()
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Submitting ResultStage 3 (MapPartitionsRDD[17] at count at RepJoinDataset.scala:54), which has no missing parents
+2022-03-04 22:31:40 INFO  MemoryStore:54 - Block broadcast_6 stored as values in memory (estimated size 7.4 KB, free 357.7 MB)
+2022-03-04 22:31:40 INFO  MemoryStore:54 - Block broadcast_6_piece0 stored as bytes in memory (estimated size 3.8 KB, free 357.7 MB)
+2022-03-04 22:31:40 INFO  BlockManagerInfo:54 - Added broadcast_6_piece0 in memory on 10.0.0.13:55910 (size: 3.8 KB, free: 366.2 MB)
+2022-03-04 22:31:40 INFO  SparkContext:54 - Created broadcast 6 from broadcast at DAGScheduler.scala:1039
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[17] at count at RepJoinDataset.scala:54) (first 15 tasks are for partitions Vector(0))
+2022-03-04 22:31:40 INFO  TaskSchedulerImpl:54 - Adding task set 3.0 with 1 tasks
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Starting task 0.0 in stage 3.0 (TID 6, localhost, executor driver, partition 0, ANY, 7754 bytes)
+2022-03-04 22:31:40 INFO  Executor:54 - Running task 0.0 in stage 3.0 (TID 6)
+2022-03-04 22:31:40 INFO  ShuffleBlockFetcherIterator:54 - Getting 2 non-empty blocks out of 2 blocks
+2022-03-04 22:31:40 INFO  ShuffleBlockFetcherIterator:54 - Started 0 remote fetches in 7 ms
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 0.0 in stage 3.0 (TID 6). 1775 bytes result sent to driver
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 0.0 in stage 3.0 (TID 6) in 37 ms on localhost (executor driver) (1/1)
+2022-03-04 22:31:40 INFO  TaskSchedulerImpl:54 - Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - ResultStage 3 (count at RepJoinDataset.scala:54) finished in 0.046 s
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Job 2 finished: count at RepJoinDataset.scala:54, took 0.148287 s
+Total Triangle Count0
+*(3) BroadcastHashJoin [df2_Y#12, df1_X#6], [X#2, Y#3], Inner, BuildRight
+:- *(3) BroadcastHashJoin [df1_Y#7], [df2_X#11], Inner, BuildRight, NOT (df1_X#6 = df2_Y#12)
+:  :- *(3) Project [X#2 AS df1_X#6, Y#3 AS df1_Y#7]
+:  :  +- *(3) Filter (isnotnull(Y#3) && isnotnull(X#2))
+:  :     +- Scan ExistingRDD[X#2,Y#3]
+:  +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, true]))
+:     +- *(1) Project [Y#3 AS df2_X#11, Y#3 AS df2_Y#12]
+:        +- *(1) Filter isnotnull(Y#3)
+:           +- Scan ExistingRDD[X#2,Y#3]
++- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, false], input[1, string, false]))
+   +- *(2) Filter (isnotnull(X#2) && isnotnull(Y#3))
+      +- Scan ExistingRDD[X#2,Y#3]
+
+2022-03-04 22:31:40 INFO  deprecation:1420 - mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+2022-03-04 22:31:40 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-03-04 22:31:40 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-03-04 22:31:40 INFO  SparkContext:54 - Starting job: runJob at SparkHadoopWriter.scala:78
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Got job 3 (runJob at SparkHadoopWriter.scala:78) with 4 output partitions
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Final stage: ResultStage 4 (runJob at SparkHadoopWriter.scala:78)
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Parents of final stage: List()
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Missing parents: List()
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Submitting ResultStage 4 (MapPartitionsRDD[19] at saveAsTextFile at RepJoinDataset.scala:61), which has no missing parents
+2022-03-04 22:31:40 INFO  MemoryStore:54 - Block broadcast_7 stored as values in memory (estimated size 145.8 KB, free 357.6 MB)
+2022-03-04 22:31:40 INFO  MemoryStore:54 - Block broadcast_7_piece0 stored as bytes in memory (estimated size 53.4 KB, free 357.5 MB)
+2022-03-04 22:31:40 INFO  BlockManagerInfo:54 - Added broadcast_7_piece0 in memory on 10.0.0.13:55910 (size: 53.4 KB, free: 366.2 MB)
+2022-03-04 22:31:40 INFO  SparkContext:54 - Created broadcast 7 from broadcast at DAGScheduler.scala:1039
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Submitting 4 missing tasks from ResultStage 4 (MapPartitionsRDD[19] at saveAsTextFile at RepJoinDataset.scala:61) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+2022-03-04 22:31:40 INFO  TaskSchedulerImpl:54 - Adding task set 4.0 with 4 tasks
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Starting task 0.0 in stage 4.0 (TID 7, localhost, executor driver, partition 0, PROCESS_LOCAL, 7855 bytes)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Starting task 1.0 in stage 4.0 (TID 8, localhost, executor driver, partition 1, PROCESS_LOCAL, 7855 bytes)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Starting task 2.0 in stage 4.0 (TID 9, localhost, executor driver, partition 2, PROCESS_LOCAL, 7855 bytes)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Starting task 3.0 in stage 4.0 (TID 10, localhost, executor driver, partition 3, PROCESS_LOCAL, 7881 bytes)
+2022-03-04 22:31:40 INFO  Executor:54 - Running task 1.0 in stage 4.0 (TID 8)
+2022-03-04 22:31:40 INFO  Executor:54 - Running task 2.0 in stage 4.0 (TID 9)
+2022-03-04 22:31:40 INFO  Executor:54 - Running task 3.0 in stage 4.0 (TID 10)
+2022-03-04 22:31:40 INFO  Executor:54 - Running task 0.0 in stage 4.0 (TID 7)
+2022-03-04 22:31:40 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-03-04 22:31:40 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-03-04 22:31:40 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-03-04 22:31:40 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-03-04 22:31:40 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-03-04 22:31:40 INFO  FileOutputCommitter:142 - File Output Committer Algorithm version is 2
+2022-03-04 22:31:40 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-03-04 22:31:40 INFO  FileOutputCommitter:157 - FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-03-04 22:31:40 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220304223140_0019_m_000003_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/output
+2022-03-04 22:31:40 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220304223140_0019_m_000002_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/output
+2022-03-04 22:31:40 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220304223140_0019_m_000000_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/output
+2022-03-04 22:31:40 INFO  FileOutputCommitter:609 - Saved output of task 'attempt_20220304223140_0019_m_000001_0' to file:/Users/maverick/Documents/Courses/LSDP/git/hw-3-barkhasaxena/RepJoinDS/output
+2022-03-04 22:31:40 INFO  SparkHadoopMapRedUtil:54 - attempt_20220304223140_0019_m_000003_0: Committed
+2022-03-04 22:31:40 INFO  SparkHadoopMapRedUtil:54 - attempt_20220304223140_0019_m_000000_0: Committed
+2022-03-04 22:31:40 INFO  SparkHadoopMapRedUtil:54 - attempt_20220304223140_0019_m_000002_0: Committed
+2022-03-04 22:31:40 INFO  SparkHadoopMapRedUtil:54 - attempt_20220304223140_0019_m_000001_0: Committed
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 2.0 in stage 4.0 (TID 9). 1029 bytes result sent to driver
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 3.0 in stage 4.0 (TID 10). 1072 bytes result sent to driver
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 1.0 in stage 4.0 (TID 8). 1029 bytes result sent to driver
+2022-03-04 22:31:40 INFO  Executor:54 - Finished task 0.0 in stage 4.0 (TID 7). 986 bytes result sent to driver
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 3.0 in stage 4.0 (TID 10) in 68 ms on localhost (executor driver) (1/4)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 0.0 in stage 4.0 (TID 7) in 74 ms on localhost (executor driver) (2/4)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 2.0 in stage 4.0 (TID 9) in 70 ms on localhost (executor driver) (3/4)
+2022-03-04 22:31:40 INFO  TaskSetManager:54 - Finished task 1.0 in stage 4.0 (TID 8) in 70 ms on localhost (executor driver) (4/4)
+2022-03-04 22:31:40 INFO  TaskSchedulerImpl:54 - Removed TaskSet 4.0, whose tasks have all completed, from pool 
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - ResultStage 4 (runJob at SparkHadoopWriter.scala:78) finished in 0.102 s
+2022-03-04 22:31:40 INFO  DAGScheduler:54 - Job 3 finished: runJob at SparkHadoopWriter.scala:78, took 0.104146 s
+2022-03-04 22:31:40 INFO  SparkHadoopWriter:54 - Job job_20220304223140_0019 committed.
+2022-03-04 22:31:40 INFO  SparkContext:54 - Invoking stop() from shutdown hook
+2022-03-04 22:31:40 INFO  AbstractConnector:318 - Stopped Spark@73393584{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2022-03-04 22:31:40 INFO  SparkUI:54 - Stopped Spark web UI at http://10.0.0.13:4040
+2022-03-04 22:31:40 INFO  MapOutputTrackerMasterEndpoint:54 - MapOutputTrackerMasterEndpoint stopped!
+2022-03-04 22:31:40 INFO  MemoryStore:54 - MemoryStore cleared
+2022-03-04 22:31:40 INFO  BlockManager:54 - BlockManager stopped
+2022-03-04 22:31:40 INFO  BlockManagerMaster:54 - BlockManagerMaster stopped
+2022-03-04 22:31:40 INFO  OutputCommitCoordinator$OutputCommitCoordinatorEndpoint:54 - OutputCommitCoordinator stopped!
+2022-03-04 22:31:40 INFO  SparkContext:54 - Successfully stopped SparkContext
+2022-03-04 22:31:40 INFO  ShutdownHookManager:54 - Shutdown hook called
+2022-03-04 22:31:40 INFO  ShutdownHookManager:54 - Deleting directory /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-1f5b3644-5d5c-4996-8f9a-6b1a6f1078bc
+2022-03-04 22:31:40 INFO  ShutdownHookManager:54 - Deleting directory /private/var/folders/qw/p_zr8xy51kvdssgvx1hlgfv80000gn/T/spark-5ad09944-d80e-42b9-bdb6-4bfbd25ea89b

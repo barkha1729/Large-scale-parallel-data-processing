@@ -1,0 +1,6 @@
+PR/PageRankMapReduce$FinalPageRankMapper.class
+PR/PageRankMapReduce$PageRankMapper.class
+PR/PageRankMapReduce$GlobalCounter.class
+PR/PageRankMapReduce.class
+PR/PageRankMapReduce$PageRankReducer.class
+PR/CustomNode.class

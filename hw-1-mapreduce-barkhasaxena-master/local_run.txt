@@ -1,0 +1,44 @@
+mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------------< cs6240:mr-demo >---------------------------
+[INFO] Building mr-demo 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from maven-default-http-blocker: http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[WARNING] Could not transfer metadata net.minidev:json-smart/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ mr-demo ---
+[INFO] Deleting /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mr-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ mr-demo ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ mr-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ mr-demo ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ mr-demo ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ mr-demo ---
+[INFO] Building jar: /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/target/mr-demo-1.0.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:3.1.1:shade (default) @ mr-demo ---
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/target/mr-demo-1.0.jar with /Users/maverick/Documents/Courses/LSDP/git/hw-1-twitter-mapreduce-barkhasaxena/target/mr-demo-1.0-shaded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.876 s
+[INFO] Finished at: 2022-02-04T20:36:52-05:00
+[INFO] ------------------------------------------------------------------------
+rm -rf output*
+/usr/local/Cellar/hadoop/3.3.1/libexec/bin/hadoop jar target/mr-demo-1.0.jar wc.TwitterFollowerCountMain input output
