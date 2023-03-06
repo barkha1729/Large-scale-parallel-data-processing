@@ -6,7 +6,7 @@ Fall 2018
 
 Code author
 -----------
-Joe Sackett
+Barkha Saxena
 
 Installation
 ------------
